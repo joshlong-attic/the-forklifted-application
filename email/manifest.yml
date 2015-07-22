@@ -1,12 +1,12 @@
 ---
 applications:
-- name: sessions
+- name: sendgrid
   memory: 512M
   instances: 1
-  host: sessions-${random-word}
-  path: target/sessions.jar
+  host: sendgrid-${random-word}
+  path: target/sendgrid.jar
   services:
-    - redis-sessions
+    - cf-sendgrid
   env:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"
