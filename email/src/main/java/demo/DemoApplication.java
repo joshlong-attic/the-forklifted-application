@@ -4,11 +4,13 @@ import com.sendgrid.SendGrid;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoApplication {
 
+    @ConditionalOnBean(SendGrid.class)
     @Bean
     CommandLineRunner runner(SendGrid sendGrid) {
         return args -> {
