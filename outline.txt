@@ -1,0 +1,38 @@
+# The Forklifted Application
+
+the CIO finds the promised platform: PaaS! want to embrace, but there are some flies in te proverbial ointment: legacy doesnt PaaS. Heres some soft touch refactorings
+
+PaaS is a good story, its valuabe. The CiO likes it because of promised velocity (CI/CD) and the oeprations team likes it because of superior, consistant governance. But developers like it because of the numerous NFRs that are handled for you like logging, routing, scaling, etc.
+
+You must be this tall to ride the PaaS! there is a contract
+
+
+- legacy forever vs modernized apps
+- platform contract vs variability
+- ideals: DI & test harness
+- DI & JNDI
+ -- btw, if u want to go further, 12f config extends to things like SC Config Server
+- file systems:
+ -- PCF has an S3 alternaive in beta
+ -- platform, as good as it is, is continuously improving
+ -- DEMO needs a manifest.yml
+- sessions
+ -- CF + sticky sessions (no replication) vs Heroku
+ -- CF + tomcat + well known Redis
+ -- CF + Spring Session
+- RMI
+ -- Http/Invoker
+ -- Spring Advanced Serializers (Avro, MessagePack, GPB, etc.)
+- JTA
+- services:
+ -- service brokers
+- email
+- buildpacks
+ -- maybe just customized Java using ENV vars for the java buildpack
+ -- need more? Use IBM or JBoss buildpacks
+- containers w/ Lattice & Docker
+
+Where to go from here:
+ - 12factor.net/*
+ - Matt Stine's 'Migrating Cloud Native'
+ 

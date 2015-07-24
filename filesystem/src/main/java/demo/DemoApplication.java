@@ -41,7 +41,8 @@ class FileController {
         if (existing.isPresent()) {
             gridFsTemplate.delete(getFilenameQuery(name));
         }
-        gridFsTemplate.store(file.getInputStream(), name, file.getContentType()).save();
+        gridFsTemplate.store(file.getInputStream(),
+                name, file.getContentType()).save();
 
         return "redirect:/";
     }
