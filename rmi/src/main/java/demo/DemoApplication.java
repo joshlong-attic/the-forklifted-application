@@ -8,24 +8,23 @@ import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
 @SpringBootApplication
 public class DemoApplication {
 
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
     @Bean
     MessageService messageService() {
         return new SimpleMessageService();
     }
 
     @Bean(name = "/messageService")
-    HttpInvokerServiceExporter httpMessageService( ) {
+    HttpInvokerServiceExporter httpMessageService() {
         HttpInvokerServiceExporter http = new HttpInvokerServiceExporter();
         http.setServiceInterface(MessageService.class);
-        http.setService( this.messageService());
+        http.setService(this.messageService());
         return http;
     }
-
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(DemoApplication.class, args);
-    }
 }
-
 
 class SimpleMessageService
         implements MessageService {
