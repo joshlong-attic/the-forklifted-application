@@ -17,6 +17,7 @@ public class DemoApplication {
 
 @RestController
 class GreetingsRestController {
+
     @RequestMapping("/hi/{name")
     String hi(@PathVariable String name) {
         return "Hi, " + name + "!";

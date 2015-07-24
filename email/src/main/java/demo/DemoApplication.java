@@ -1,30 +1,38 @@
 package demo;
 
 import com.sendgrid.SendGrid;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class DemoApplication {
 
-    @ConditionalOnBean(SendGrid.class)
-    @Bean
-    CommandLineRunner runner(SendGrid sendGrid) {
-        return args -> {
-            SendGrid.Email email = new SendGrid.Email();
-            email.setHtml("<hi>Hello Josh</h1>");
-            email.setTo(new String[]{"jlong@pivotal.io"});
-            email.setToName(new String[]{"Josh"});
-            SendGrid.Response send = sendGrid.send(email);
-            System.out.println("received " + send.getCode());
-        };
-    }
-
-
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
+}
+
+@RestController
+class EmailRestController {
+
+    @Autowired
+    private SendGrid sendGrid;
+
+    @RequestMapping("/email")
+    SendGrid.Response email(@RequestParam String message) throws Exception {
+        SendGrid.Email email = new SendGrid.Email();
+        email.setHtml("<hi>" + message + "</h1>");
+        email.setText(message);
+        email.setTo(new String[]{"jlong@pivotal.io"});
+        email.setToName(new String[]{"Josh"});
+        email.setFrom("jlong@gopivotal.com");
+        email.setFromName("Josh (sender)");
+        email.setSubject("I just called.. to say.. I (message truncated)");
+        return sendGrid.send(email);
+    }
+
 }

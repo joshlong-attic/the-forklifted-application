@@ -24,13 +24,15 @@ public class DemoApplication {
     }
 
     @Bean
-    CommandLineRunner demo(AccountService service, AccountRepository repository) {
+    CommandLineRunner demo(AccountService service,
+                           AccountRepository repository) {
         return args -> {
             service.createAccountAndNotify("josh");
             System.out.println("Count is " + repository.count());
             try {
                 service.createAccountAndNotify("error");
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
             System.out.println("Count is " + repository.count());
@@ -76,15 +78,11 @@ class Messages {
 @Transactional
 class AccountService {
 
-    private final JmsTemplate jmsTemplate;
-
-    private final AccountRepository accountRepository;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     @Autowired
-    public AccountService(JmsTemplate jmsTemplate, AccountRepository accountRepository) {
-        this.jmsTemplate = jmsTemplate;
-        this.accountRepository = accountRepository;
-    }
+    private AccountRepository accountRepository;
 
     public void createAccountAndNotify(String username) {
         this.jmsTemplate.convertAndSend("accounts", username);

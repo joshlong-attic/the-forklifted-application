@@ -28,7 +28,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hornetq</groupId>
 			<artifactId>hornetq-jms-server</artifactId>
