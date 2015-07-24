@@ -1,12 +1,10 @@
 ---
 applications:
-- name: sessions
+- name: rmi
   memory: 512M
   instances: 1
-  host: sessions-${random-word}
-  path: target/sessions.jar
-  services:
-    - redis-sessions
+  host: rmi-${random-word}
+  path: target/rmi.jar
   env:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"

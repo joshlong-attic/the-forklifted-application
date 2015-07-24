@@ -1,6 +1,7 @@
 package demo;
 
 import org.junit.Test;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,9 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() throws Exception {
+
+        SpringApplication.run( DemoApplication.class) ;
+
         AnnotationConfigApplicationContext clientContext =
                 new AnnotationConfigApplicationContext(DemoApplicationClient.class);
         MessageService messageService = clientContext.getBean(MessageService.class);
