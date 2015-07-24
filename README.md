@@ -1,1 +1,3 @@
-# the-forklifted-app
+# the Forklifted Application 
+
+You've got this shiny new platform on to which you'd like to deploy applications, but you've got - as any who've succeeded invariably do - legacy applications you'd like to move forward. A PaaS offers a contract: if your application conforms to that contract, then the platform can make guarantees about the quality of the application. In this talk, we'll look at how to take existing applications and 'forklift' them with minimally invasive, soft-touch refactorings. The goal here isn't to commit to a long period of R&D to walk the cloud native journey, it's to get existing apps up and running with a minimum of effort.
