@@ -25,7 +25,7 @@ public class DemoApplicationTests {
     @Test
     public void contextLoads() throws Exception {
 
-        SpringApplication.run( DemoApplication.class) ;
+       // SpringApplication.run( DemoApplication.class) ;
 
         AnnotationConfigApplicationContext clientContext =
                 new AnnotationConfigApplicationContext(DemoApplicationClient.class);

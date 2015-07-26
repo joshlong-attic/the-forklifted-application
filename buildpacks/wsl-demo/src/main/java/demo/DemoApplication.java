@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/hi")
 public class DemoApplication extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

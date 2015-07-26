@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import javax.sql.DataSource;
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -24,11 +26,10 @@ public class DemoApplication {
             System.out.println("username: '" + username+"'");
             System.out.println("password: '" + pw+"'");
 
-            RowMapper<FtpUser> ftpUserRowMapper = (rs, i) ->
+            RowMapper<FtpUser> rowMapper = (rs, i) ->
                     new FtpUser(rs.getString("USERNAME"), rs.getBoolean("ADMIN"), rs.getBoolean("ENABLED"));
 
-            template.query(" SELECT * FROM FTP_USER ", ftpUserRowMapper)
-                    .forEach(System.out::println);
+            template.query(" SELECT * FROM FTP_USER ", rowMapper).forEach(System.out::println);
         };
 
     }
